@@ -254,7 +254,6 @@
   <string name="create">创建</string>
   <string name="added">已添加</string>
   <string name="collect">收集</string>
-  <string name="run_again">再次运行</string>
   <string name="text_image_generation_text_field_placeholder">输入提示词…</string>
   <string name="input_history">输入历史</string>
   <string name="conversation_history">对话历史</string>
