@@ -17,7 +17,10 @@
 package com.google.ai.edge.gallery
 
 import android.app.Application
+import android.content.Intent
+import com.google.ai.edge.gallery.api.LocalApiServer
 import com.google.ai.edge.gallery.data.DataStoreRepository
+import com.google.ai.edge.gallery.service.LocalApiService
 import com.google.ai.edge.gallery.ui.theme.ThemeSettings
 import com.google.firebase.FirebaseApp
 import dagger.hilt.android.HiltAndroidApp
@@ -35,5 +38,21 @@ class GalleryApplication : Application() {
     ThemeSettings.themeOverride.value = dataStoreRepository.readTheme()
 
     FirebaseApp.initializeApp(this)
+
+    // ── Local API Server ──────────────────────────────────────────────────────
+    // Initialize server with app context so it can access models and data store.
+    LocalApiServer.initialize(this, dataStoreRepository)
+
+    // Auto-start the API server as a foreground service when the app starts.
+    // The notification will appear until the app is killed or shutdown is called.
+    val prefs = getSharedPreferences("gallery_api_prefs", MODE_PRIVATE)
+    val apiEnabled = prefs.getBoolean("api_enabled", true)
+    if (apiEnabled) {
+      LocalApiService.start(this)
+    }
   }
-}
+
+  override fun onTerminate() {
+    LocalApiServer.stop()
+    super.onTerminate()
+  }

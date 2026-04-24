@@ -140,6 +140,17 @@
             </intent-filter>
         </service>
 
+        <!-- Local HTTP API foreground service -->
+        <service
+            android:name="com.google.ai.edge.gallery.service.LocalApiService"
+            android:foregroundServiceType="dataSync"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="com.google.ai.edge.gallery.STOP_API_SERVICE" />
+            </intent-filter>
+        </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="gallery_high_priority_push_channel" />

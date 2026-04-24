@@ -442,6 +442,8 @@ constructor(
         model.initializing = false
         if (model.instance != null) {
           Log.d(TAG, "Model '${model.name}' initialized successfully")
+          // Register model with Local API Server so it's available via /api/chat
+          com.google.ai.edge.gallery.api.LocalApiServer.registerModel(model)
           updateModelInitializationStatus(
             model = model,
             status = ModelInitializationStatusType.INITIALIZED,
@@ -491,6 +493,8 @@ constructor(
       val onDoneFn: () -> Unit = {
         model.instance = null
         model.initializing = false
+        // Unregister model from Local API Server
+        com.google.ai.edge.gallery.api.LocalApiServer.unregisterModel(model.name)
         updateModelInitializationStatus(
           model = model,
           status = ModelInitializationStatusType.NOT_INITIALIZED,

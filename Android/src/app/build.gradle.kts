@@ -79,6 +79,12 @@ dependencies {
   implementation(libs.androidx.ui.tooling.preview)
   implementation(libs.androidx.material3)
   implementation(libs.androidx.compose.navigation)
+  implementation(libs.ktor.core)
+  implementation(libs.ktor.server.core)
+  implementation(libs.ktor.server.netty)
+  implementation(libs.ktor.server.content.negotiation)
+  implementation(libs.ktor.serialization.kotlinx.json)
+  implementation(libs.ktor.server.cors)
   implementation(libs.kotlinx.serialization.json)
   implementation(libs.kotlin.reflect)
   implementation(libs.material.icon.extended)
@@ -120,7 +126,6 @@ dependencies {
   debugImplementation(libs.androidx.ui.test.manifest)
   ksp(libs.moshi.kotlin.codegen)
   implementation(libs.mlkit.genai.prompt)
-}
 
 protobuf {
   protoc { artifact = "com.google.protobuf:protoc:4.26.1" }
