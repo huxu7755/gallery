@@ -126,6 +126,7 @@ dependencies {
   debugImplementation(libs.androidx.ui.test.manifest)
   ksp(libs.moshi.kotlin.codegen)
   implementation(libs.mlkit.genai.prompt)
+}
 
 protobuf {
   protoc { artifact = "com.google.protobuf:protoc:4.26.1" }
