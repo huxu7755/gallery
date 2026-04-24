@@ -353,4 +353,31 @@
   <string name="cd_task_card">%1$s 任务，含 %2$d 个模型</string>
   <string name="cd_error">错误</string>
   <string name="cd_import_model_from_local_file_button">从本地文件导入模型</string>
+
+  <!-- Missing translations added for i18n completeness -->
+  <string name="app_intro">探索来自 Google AI Edge 的出色设备端模型世界</string>
+  <string name="gallery_news_notification_title">Gallery 新闻</string>
+  <string name="basic_info">基本信息</string>
+  <string name="chat_generic_result_name">结果</string>
+  <string name="litert_community_label">LiteRT 社区</string>
+  <string name="notification_content_fail">下载模型 "%s" 失败</string>
+  <string name="notification_content_success">模型 "%s" 已下载完成</string>
+  <string name="notification_title_fail">模型下载失败</string>
+  <string name="notification_title_success">模型下载成功</string>
+  <string name="running">运行中...</string>
+  <string name="selected_count">已选择 %d 项</string>
+  <string name="try_it">试一试</string>
+  <string name="mobile_actions_challenge_title">移动操作微调挑战</string>
+  <string name="mobile_actions_challenge_subtitle">构建它，玩转它！</string>
+  <string name="mobile_actions_challenge_description">此演示已锁定。要解锁移动操作功能，您需要微调 Gemma 2B 模型。</string>
+  <string name="mobile_actions_challenge_instructions_title">说明：</string>
+  <string name="mobile_actions_challenge_instruction_1">1. 打开 Google Colab 笔记本</string>
+  <string name="mobile_actions_challenge_instruction_2">2. 按照说明在 Google Colab 中微调模型</string>
+  <string name="mobile_actions_challenge_instruction_3">3. 将文件传输到此手机</string>
+  <string name="mobile_actions_challenge_instruction_4">4. 点击"加载模型"按钮</string>
+  <string name="mobile_actions_challenge_email_colab">将指南发送给自己</string>
+  <string name="mobile_actions_challenge_load_model">加载模型</string>
+  <string name="duplicated_script_name">脚本名称重复</string>
+  <string name="loading_skills_allowlist">正在加载精选技能...</string>
+  <string name="skill_limit_warning">启用超过 %s 个技能可能会影响性能</string>
 </resources>
