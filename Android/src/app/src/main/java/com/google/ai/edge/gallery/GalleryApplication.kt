@@ -56,3 +56,4 @@ class GalleryApplication : Application() {
     LocalApiServer.stop()
     super.onTerminate()
   }
+}
