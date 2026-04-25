@@ -69,6 +69,15 @@ android {
   }
 }
 
+android.packaging {
+  resources.excludes.add("META-INF/INDEX.LIST")
+  resources.excludes.add("META-INF/DEPENDENCIES")
+  resources.excludes.add("META-INF/LICENSE")
+  resources.excludes.add("META-INF/LICENSE.txt")
+  resources.excludes.add("META-INF/NOTICE")
+  resources.excludes.add("META-INF/NOTICE.txt")
+}
+
 dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
