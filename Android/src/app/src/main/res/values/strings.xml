@@ -118,7 +118,7 @@
   <string name="logs_viewer_no_matching_logs">No logs match the filter</string>
   <string name="memory_warning_content">The model you\'ve selected may exceed your device\'s memory, which can cause the app to crash. For the best experience, we recommend trying a smaller model.</string>
   <string name="memory_warning_proceed_anyway">Proceed anyway</string>
-  <string name="memory_warning_title">Memory Warning</string>
+  <string name="memory_warning_title">Memory usage is high</string>
   <string name="max_tokens_warning_message">Setting max tokens above 10000 may cause app to be unstable.</string>
   <string name="model_is_initializing_msg">Initializing model…</string>
   <string name="model_list_imported_models_title">Imported models</string>
@@ -440,9 +440,6 @@
   <string name="retry">Retry</string>
 
   <!-- Common UI -->
-  <string name="cancel">Cancel</string>
-  <string name="close">Close</string>
-  <string name="dismiss">Dismiss</string>
   <string name="import_label">Import</string>
   <string name="read_more">Read more</string>
 
@@ -464,10 +461,8 @@
   <string name="clear_history_title">Clear history?</string>
   <string name="clear_history_message">Are you sure you want to clear the history? This action cannot be undone.</string>
   <string name="take_picture">Take a picture</string>
-  <string name="pick_from_album">Pick from album</string>
   <string name="record_audio_clip">Record audio clip</string>
   <string name="pick_wav_file">Pick wav file</string>
-  <string name="input_history">Input history</string>
 
   <!-- Prompt Lab -->
   <string name="enter_content">Enter content</string>
@@ -480,7 +475,7 @@
   <string name="task_prompt_lab">Prompt Lab</string>
 
   <!-- Benchmark -->
-  <string name="benchmark_model">Model</string>
+  <string name="benchmark_model_label">Model</string>
   <string name="benchmark_accelerator">Accelerator</string>
   <string name="benchmark_prefill_tokens">Prefill tokens</string>
   <string name="benchmark_decode_tokens">Decode tokens</string>
@@ -505,23 +500,17 @@
   <string name="content_desc_clear_filter">Clear filter</string>
 
   <!-- Top Bar -->
-  <string name="done">Done</string>
 
   <!-- New Release Notification -->
-  <string name="update_available">Update available</string>
 
   <!-- Memory Warning -->
-  <string name="memory_warning_title">Memory usage is high</string>
 
   <!-- Language Settings -->
-  <string name="settings_language">Language</string>
   <string name="settings_language_system">System default</string>
   <string name="settings_language_en">English</string>
   <string name="settings_language_zh">中文</string>
 
   <!-- API Server -->
-  <string name="settings_api_server">API Server</string>
-  <string name="settings_api_server_address">http://127.0.0.1:8080</string>
   <string name="settings_api_server_status">Status</string>
   <string name="settings_api_server_running">Running</string>
   <string name="settings_api_server_stopped">Stopped</string>

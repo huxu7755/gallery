@@ -88,7 +88,7 @@
   <string name="warning_no_function_call">未识别到函数调用</string>
   <string name="snackbar_no_function_call">未识别到函数调用</string>
   <string name="unsupported_action">不支持的操作</string>
-  <string name="memory_warning_title">内存警告</string>
+  <string name="memory_warning_title">内存使用率较高</string>
   <string name="memory_warning_content">您选择的模型可能超出设备内存，可能导致应用崩溃。为获得最佳体验，建议尝试更小的模型。</string>
   <string name="memory_warning_proceed_anyway">仍然继续</string>
   <string name="max_tokens_warning_message">将最大 token 设置超过 10000 可能导致应用不稳定。</string>
@@ -407,9 +407,6 @@
   <string name="retry">重试</string>
 
   <!-- Common UI -->
-  <string name="cancel">取消</string>
-  <string name="close">关闭</string>
-  <string name="dismiss">忽略</string>
   <string name="import_label">导入</string>
   <string name="read_more">阅读更多</string>
 
@@ -431,10 +428,8 @@
   <string name="clear_history_title">清除历史记录？</string>
   <string name="clear_history_message">确定要清除历史记录吗？此操作无法撤销。</string>
   <string name="take_picture">拍照</string>
-  <string name="pick_from_album">从相册选择</string>
   <string name="record_audio_clip">录制音频片段</string>
   <string name="pick_wav_file">选择 wav 文件</string>
-  <string name="input_history">输入历史</string>
 
   <!-- Prompt Lab -->
   <string name="enter_content">输入内容</string>
@@ -447,7 +442,7 @@
   <string name="task_prompt_lab">提示词实验室</string>
 
   <!-- Benchmark -->
-  <string name="benchmark_model">模型</string>
+  <string name="benchmark_model_label">模型</string>
   <string name="benchmark_accelerator">加速器</string>
   <string name="benchmark_prefill_tokens">预填充令牌</string>
   <string name="benchmark_decode_tokens">解码令牌</string>
@@ -472,23 +467,17 @@
   <string name="content_desc_clear_filter">清除筛选</string>
 
   <!-- Top Bar -->
-  <string name="done">完成</string>
 
   <!-- New Release Notification -->
-  <string name="update_available">有可用更新</string>
 
   <!-- Memory Warning -->
-  <string name="memory_warning_title">内存使用率较高</string>
 
   <!-- Language Settings -->
-  <string name="settings_language">语言</string>
   <string name="settings_language_system">跟随系统</string>
   <string name="settings_language_en">English</string>
   <string name="settings_language_zh">中文</string>
 
   <!-- API Server -->
-  <string name="settings_api_server">API 服务器</string>
-  <string name="settings_api_server_address">http://127.0.0.1:8080</string>
   <string name="settings_api_server_status">状态</string>
   <string name="settings_api_server_running">运行中</string>
   <string name="settings_api_server_stopped">已停止</string>

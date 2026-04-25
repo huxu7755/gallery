@@ -400,7 +400,7 @@ fun BenchmarkResultsViewer(
                               verticalArrangement = Arrangement.spacedBy(8.dp),
                               modifier = Modifier.padding(start = 6.dp, top = 6.dp, bottom = 4.dp),
                             ) {
-                              StatRow(label = stringResource(R.string.benchmark_model), value = llmResult.baiscInfo.modelName)
+                              StatRow(label = stringResource(R.string.benchmark_model_label), value = llmResult.baiscInfo.modelName)
                               StatRow(
                                 label = stringResource(R.string.benchmark_accelerator),
                                 value = llmResult.baiscInfo.accelerator,
