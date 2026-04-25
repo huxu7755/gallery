@@ -268,7 +268,6 @@
   <string name="add_script">添加脚本</string>
   <string name="add_default_script">添加默认脚本</string>
   <string name="delete_script_dialog_title">删除脚本</string>
-  <string name="duplicate_script_name">脚本名称重复</string>
   <string name="enable_skill_dialog_content">请点击下方的技能按钮启用该技能。</string>
   <string name="replace_skill_dialog_title">替换现有技能</string>
   <string name="replace_skill_dialog_content">同名技能已存在。是否要替换？</string>
@@ -283,7 +282,10 @@
   <string name="failed_to_save">保存失败</string>
   <string name="invalid_response">无效的响应</string>
   <string name="disabled">已禁用</string>
-  <string name="parameter">参数</string>
+  <plurals name="parameter">
+    <item quantity="one">参数</item>
+    <item quantity="other">参数</item>
+  </plurals>
 
   <!-- Skill creator -->
   <string name="add_skill_manual_input_sheet_title">创建技能</string>
