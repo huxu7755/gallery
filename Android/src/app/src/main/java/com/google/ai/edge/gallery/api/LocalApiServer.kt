@@ -111,7 +111,7 @@ object LocalApiServer {
     }
   }
 
-  @Volatile private var server: io.ktor.server.engine.ApplicationEngine? = null
+  @Volatile private var server: io.ktor.server.netty.NettyApplicationEngine? = null
   @Volatile private var _running = false
 
   val running: Boolean get() = _running
@@ -137,7 +137,7 @@ object LocalApiServer {
       ) {
         configureApp()
         configureRouting()
-      }
+      } as io.ktor.server.netty.NettyApplicationEngine
       server?.start(wait = false)
       _running = true
       Log.i(TAG, "Local API server started at http://$HOST:$PORT")
