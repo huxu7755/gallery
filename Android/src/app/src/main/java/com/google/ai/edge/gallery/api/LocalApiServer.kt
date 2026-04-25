@@ -111,7 +111,7 @@ object LocalApiServer {
     }
   }
 
-  @Volatile private var server: NettyApplicationEngine? = null
+  @Volatile private var server: io.ktor.server.engine.ApplicationEngine? = null
   @Volatile private var _running = false
 
   val running: Boolean get() = _running
