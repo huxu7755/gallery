@@ -19,6 +19,8 @@ package com.google.ai.edge.gallery.ui.common.chat
 // import androidx.compose.ui.tooling.preview.Preview
 // import com.google.ai.edge.gallery.ui.theme.GalleryTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.data.Config
 import com.google.ai.edge.gallery.data.ConfigKeys
 import com.google.ai.edge.gallery.data.NumberSliderConfig

@@ -468,7 +468,8 @@ fun GlobalModelManager(
             showImportingDialog = false
 
             // Show a snack bar for successful import.
-            scope.launch { snackbarHostState.showSnackbar(stringResource(R.string.model_imported_successfully)) }
+            val successMsg = stringResource(R.string.model_imported_successfully)
+            scope.launch { snackbarHostState.showSnackbar(successMsg) }
           },
         )
       }

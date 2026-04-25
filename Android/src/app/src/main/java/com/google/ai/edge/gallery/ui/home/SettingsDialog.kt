@@ -87,7 +87,6 @@ import com.google.ai.edge.gallery.ui.theme.labelSmallNarrow
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 import kotlin.math.min
 
 private enum class LanguageOption(val tag: String?) {
