@@ -69,15 +69,6 @@ android {
   }
 }
 
-android.packaging {
-  resources.excludes.add("META-INF/INDEX.LIST")
-  resources.excludes.add("META-INF/DEPENDENCIES")
-  resources.excludes.add("META-INF/LICENSE")
-  resources.excludes.add("META-INF/LICENSE.txt")
-  resources.excludes.add("META-INF/NOTICE")
-  resources.excludes.add("META-INF/NOTICE.txt")
-}
-
 dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -89,7 +80,7 @@ dependencies {
   implementation(libs.androidx.material3)
   implementation(libs.androidx.compose.navigation)
   implementation(libs.ktor.server.core)
-  implementation(libs.ktor.server.netty)
+  implementation(libs.ktor.server.cio)
   implementation(libs.ktor.server.content.negotiation)
   implementation(libs.ktor.serialization.kotlinx.json)
   implementation(libs.ktor.server.cors)

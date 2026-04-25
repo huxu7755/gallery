@@ -103,6 +103,7 @@ moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-code
 ktor-core = { group = "io.ktor", name = "ktor-core", version.ref = "ing-ktor-core" }
 ktor-server-core = { group = "io.ktor", name = "ktor-server-core", version.ref = "ing-ktor-server-core" }
 ktor-server-netty = { group = "io.ktor", name = "ktor-server-netty", version.ref = "ing-ktor-server-netty" }
+ktor-server-cio = { group = "io.ktor", name = "ktor-server-cio", version.ref = "ing-ktor-server-netty" }
 ktor-server-content-negotiation = { group = "io.ktor", name = "ktor-server-content-negotiation", version.ref = "ing-ktor-server-content-negotiation" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ing-ktor-serialization-kotlinx-json" }
 ktor-server-cors = { group = "io.ktor", name = "ktor-server-cors", version.ref = "ing-ktor-server-cors" }

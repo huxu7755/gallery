@@ -32,8 +32,7 @@ import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.call
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
-import io.ktor.server.netty.NettyApplicationEngine
+import io.ktor.server.cio.CIO
 import io.ktor.server.plugins.cors.routing.CORS
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.request.receiveText
@@ -131,7 +130,7 @@ object LocalApiServer {
     }
     try {
       server = embeddedServer(
-        Netty,
+        CIO,
         port = PORT,
         host = HOST,
       ) {
