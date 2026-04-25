@@ -467,7 +467,7 @@ fun GlobalModelManager(
             viewModel.addImportedLlmModel(info = it)
             showImportingDialog = false
 
-            // Show a snack bar for successful import.
+            // [CI trigger] Show a snack bar for successful import.
             val ctx = LocalContext.current
             scope.launch { snackbarHostState.showSnackbar(ctx.getString(R.string.model_imported_successfully)) }
           },
