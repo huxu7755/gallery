@@ -528,14 +528,14 @@ fun HomeScreen(
         )
       },
       title = { Text(uiState.loadingModelAllowlistError) },
-      text = { Text("Please check your internet connection and try again later.") },
+      text = { Text(stringResource(R.string.error_check_internet)) },
       onDismissRequest = { modelManagerViewModel.loadModelAllowlist() },
       confirmButton = {
-        TextButton(onClick = { modelManagerViewModel.loadModelAllowlist() }) { Text("Retry") }
+        TextButton(onClick = { modelManagerViewModel.loadModelAllowlist() }) { Text(stringResource(R.string.retry)) }
       },
       dismissButton = {
         TextButton(onClick = { modelManagerViewModel.clearLoadModelAllowlistError() }) {
-          Text("Cancel")
+          Text(stringResource(R.string.cancel))
         }
       },
     )
@@ -1134,7 +1134,7 @@ private fun TaskCard(
               if (task.experimental) {
                 Icon(
                   painter = painterResource(R.drawable.ic_experiment),
-                  contentDescription = "Experimental",
+                  contentDescription = stringResource(R.string.content_desc_experimental),
                   modifier = Modifier.size(20.dp).padding(start = 4.dp),
                   tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

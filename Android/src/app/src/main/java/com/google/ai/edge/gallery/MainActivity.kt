@@ -17,7 +17,9 @@
 package com.google.ai.edge.gallery
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -65,6 +67,17 @@ class MainActivity : ComponentActivity() {
   private val modelManagerViewModel: ModelManagerViewModel by viewModels()
   private var splashScreenAboutToExit: Boolean = false
   private var contentSet: Boolean = false
+
+  override fun attachBaseContext(newBase: Context) {
+    val prefs = newBase.getSharedPreferences("app_settings", Context.MODE_PRIVATE)
+    val langTag = prefs.getString("language", "system")
+    val config = Configuration(newBase.resources.configuration)
+    if (langTag != null && langTag != "system") {
+      val locale = if (langTag == "zh-rCN") java.util.Locale.SIMPLIFIED_CHINESE else java.util.Locale.ENGLISH
+      config.setLocale(locale)
+    }
+    super.attachBaseContext(newBase.createConfigurationContext(config))
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     // We intentionally pass null to discard the saved instance state bundle.

@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
@@ -107,7 +108,7 @@ fun PromoScreenGm4(onDismiss: () -> Unit) {
 
       // Dismiss button.
       TextButton(onClick = onDismiss, modifier = Modifier.padding(top = 24.dp)) {
-        Text("Dismiss", color = Color(0xFFA8C7FA))
+        Text(stringResource(R.string.dismiss), color = Color(0xFFA8C7FA))
       }
     }
   }

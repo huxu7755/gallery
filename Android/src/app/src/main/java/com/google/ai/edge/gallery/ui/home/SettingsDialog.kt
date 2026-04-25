@@ -20,6 +20,7 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -27,10 +28,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -73,7 +76,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.google.ai.edge.gallery.BuildConfig
 import com.google.ai.edge.gallery.R
+import com.google.ai.edge.gallery.api.LocalApiServer
 import com.google.ai.edge.gallery.proto.Theme
+import java.util.Locale
 import com.google.ai.edge.gallery.ui.common.ClickableLink
 import com.google.ai.edge.gallery.ui.common.tos.AppTosDialog
 import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
@@ -84,6 +89,18 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 import kotlin.math.min
+
+private enum class LanguageOption(val tag: String?) {
+  SYSTEM(null),
+  EN("en"),
+  ZH("zh-rCN");
+}
+
+private val LANGUAGE_OPTIONS = listOf(
+  LanguageOption.SYSTEM,
+  LanguageOption.EN,
+  LanguageOption.ZH,
+)
 
 private val THEME_OPTIONS = listOf(Theme.THEME_AUTO, Theme.THEME_LIGHT, Theme.THEME_DARK)
 
@@ -126,13 +143,13 @@ fun SettingsDialog(
         // Dialog title and subtitle.
         Column {
           Text(
-            "Settings",
+            stringResource(R.string.settings_title),
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(bottom = 8.dp),
           )
           // Subtitle.
           Text(
-            "App version: ${BuildConfig.VERSION_NAME}",
+            stringResource(R.string.settings_app_version, BuildConfig.VERSION_NAME),
             style = labelSmallNarrow,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.offset(y = (-6).dp),
@@ -147,7 +164,7 @@ fun SettingsDialog(
           // Theme switcher.
           Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {}) {
             Text(
-              "Theme",
+              stringResource(R.string.settings_theme),
               style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Medium),
             )
             MultiChoiceSegmentedButtonRow {
@@ -181,7 +198,7 @@ fun SettingsDialog(
                     }
                   },
                   checked = theme == selectedTheme,
-                  label = { Text(themeLabel(theme)) },
+                  label = { Text(themeLabel(theme, context)) },
                 )
               }
             }
@@ -193,7 +210,7 @@ fun SettingsDialog(
             verticalArrangement = Arrangement.spacedBy(4.dp),
           ) {
             Text(
-              "HuggingFace access token",
+              stringResource(R.string.settings_hf_token_title),
               style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Medium),
             )
             // Show the start of the token.
@@ -211,12 +228,12 @@ fun SettingsDialog(
               )
             } else {
               Text(
-                "Not available",
+                stringResource(R.string.settings_hf_token_not_available),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
               )
               Text(
-                "The token will be automatically retrieved when a gated model is downloaded",
+                stringResource(R.string.settings_hf_token_description),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
               )
@@ -229,7 +246,7 @@ fun SettingsDialog(
                 },
                 enabled = curHfToken != null,
               ) {
-                Text("Clear")
+                Text(stringResource(R.string.settings_hf_token_clear))
               }
               val handleSaveToken = {
                 modelManagerViewModel.saveAccessToken(
@@ -270,7 +287,7 @@ fun SettingsDialog(
                     Box(modifier = Modifier.padding(start = 16.dp).weight(1f)) {
                       if (customHfToken.isEmpty()) {
                         Text(
-                          "Enter token manually",
+                          stringResource(R.string.settings_hf_token_enter_manually),
                           color = MaterialTheme.colorScheme.onSurfaceVariant,
                           style = MaterialTheme.typography.bodySmall,
                         )
@@ -294,7 +311,7 @@ fun SettingsDialog(
           // Third party licenses.
           Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {}) {
             Text(
-              "Third-party libraries",
+              stringResource(R.string.settings_third_party_libraries),
               style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Medium),
             )
             OutlinedButton(
@@ -305,7 +322,7 @@ fun SettingsDialog(
                 context.startActivity(intent)
               }
             ) {
-              Text("View licenses")
+              Text(stringResource(R.string.settings_view_licenses))
             }
           }
 
@@ -329,6 +346,87 @@ fun SettingsDialog(
               modifier = Modifier.padding(top = 8.dp),
             )
           }
+
+          // Language switcher.
+          Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {}) {
+            Text(
+              stringResource(R.string.settings_language),
+              style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Medium),
+            )
+            var selectedLang by remember {
+              val prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE)
+              val saved = prefs.getString("language", "system")
+              mutableStateOf(
+                when (saved) {
+                  "en" -> LanguageOption.EN
+                  "zh-rCN" -> LanguageOption.ZH
+                  else -> LanguageOption.SYSTEM
+                }
+              )
+            }
+            MultiChoiceSegmentedButtonRow {
+              LANGUAGE_OPTIONS.forEachIndexed { index, lang ->
+                SegmentedButton(
+                  shape = SegmentedButtonDefaults.itemShape(index = index, count = LANGUAGE_OPTIONS.size),
+                  onCheckedChange = {
+                    selectedLang = lang
+                    val prefs = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE)
+                    prefs.edit().putString("language", lang.tag ?: "system").apply()
+                    // Apply locale change by updating configuration and recreating activity
+                    val config = Configuration(context.resources.configuration)
+                    if (lang.tag != null) {
+                      val locale = if (lang.tag == "zh-rCN") Locale.SIMPLIFIED_CHINESE else Locale.ENGLISH
+                      config.setLocale(locale)
+                    } else {
+                      config.setLocale(Locale.getDefault())
+                    }
+                    context.resources.updateConfiguration(config, context.resources.displayMetrics)
+                    (context as? android.app.Activity)?.recreate()
+                  },
+                  checked = lang == selectedLang,
+                  label = {
+                    Text(
+                      when (lang) {
+                        LanguageOption.SYSTEM -> stringResource(R.string.settings_language_system)
+                        LanguageOption.EN -> stringResource(R.string.settings_language_en)
+                        LanguageOption.ZH -> stringResource(R.string.settings_language_zh)
+                      }
+                    )
+                  },
+                )
+              }
+            }
+          }
+
+          // API Server status.
+          Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {}) {
+            Text(
+              stringResource(R.string.settings_api_server),
+              style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Medium),
+            )
+            Text(
+              stringResource(R.string.settings_api_server_address),
+              style = MaterialTheme.typography.bodyMedium,
+              color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Row(
+              verticalAlignment = Alignment.CenterVertically,
+              modifier = Modifier.padding(top = 4.dp),
+            ) {
+              Text(
+                stringResource(R.string.settings_api_server_status) + ": ",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+              )
+              Text(
+                if (LocalApiServer.running) stringResource(R.string.settings_api_server_running)
+                else stringResource(R.string.settings_api_server_stopped),
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                color = if (LocalApiServer.running) MaterialTheme.colorScheme.primary
+                       else MaterialTheme.colorScheme.error,
+              )
+            }
+          }
         }
 
         // Button row.
@@ -337,7 +435,7 @@ fun SettingsDialog(
           horizontalArrangement = Arrangement.End,
         ) {
           // Close button
-          Button(onClick = { onDismissed() }) { Text("Close") }
+          Button(onClick = { onDismissed() }) { Text(stringResource(R.string.settings_close)) }
         }
       }
     }
@@ -348,11 +446,11 @@ fun SettingsDialog(
   }
 }
 
-private fun themeLabel(theme: Theme): String {
+private fun themeLabel(theme: Theme, context: Context): String {
   return when (theme) {
-    Theme.THEME_AUTO -> "Auto"
-    Theme.THEME_LIGHT -> "Light"
-    Theme.THEME_DARK -> "Dark"
-    else -> "Unknown"
+    Theme.THEME_AUTO -> context.getString(R.string.settings_theme_auto)
+    Theme.THEME_LIGHT -> context.getString(R.string.settings_theme_light)
+    Theme.THEME_DARK -> context.getString(R.string.settings_theme_dark)
+    else -> context.getString(R.string.settings_theme_unknown)
   }
 }
