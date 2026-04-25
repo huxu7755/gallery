@@ -57,7 +57,7 @@
   <string name="benchmark_results">基准测试结果</string>
   <string name="benchmark_steady_init_time">稳定初始化时间</string>
   <string name="benchmark_time_to_first_token">首令牌时间</string>
-  <string name="benchmark_tokens_limit_message">确保 prefill 和 decode token 总数不超过模型的最大 token 限制（%d vs %d）</string>
+  <string name="benchmark_tokens_limit_message" formatted="false">确保 prefill 和 decode token 总数不超过模型的最大 token 限制（%d vs %d）</string>
   <string name="best_overall">最佳综合</string>
   <string name="built_in_skills_title">内置技能</string>
   <string name="cancel">取消</string>

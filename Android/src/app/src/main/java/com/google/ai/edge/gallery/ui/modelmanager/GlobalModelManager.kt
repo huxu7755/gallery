@@ -457,6 +457,8 @@ fun GlobalModelManager(
 
   // Importing in progress dialog.
   if (showImportingDialog) {
+    // [CI trigger] Get context at Composable scope (before let lambda) to avoid @Composable context error
+    val ctx = LocalContext.current
     selectedLocalModelFileUri.value?.let { uri ->
       selectedImportedModelInfo.value?.let { info ->
         ModelImportingDialog(
@@ -466,9 +468,7 @@ fun GlobalModelManager(
           onDone = {
             viewModel.addImportedLlmModel(info = it)
             showImportingDialog = false
-
             // [CI trigger] Show a snack bar for successful import.
-            val ctx = LocalContext.current
             scope.launch { snackbarHostState.showSnackbar(ctx.getString(R.string.model_imported_successfully)) }
           },
         )
