@@ -412,5 +412,37 @@
 
   <!-- HF Token Expiry -->
   <string name="settings_hf_token_expires_at">过期时间：</string>
+  <string name="app_name">Google AI Edge Gallery</string>
+  <string name="app_name_first_part">Google AI</string>
+  <string name="app_name_second_part">Edge Gallery</string>
+  <string name="category_llm">LLM</string>
+  <string name="chat_agent_agent_name">Agent</string>
+  <string name="chat_llm_agent_name">LLM</string>
+  <string name="settings_language_en">English</string>
+  <string name="settings_language_zh">中文</string>
+  <plurals name="delete_selected_skills_content">
+    <item quantity="one">确定要删除 %d 个技能吗？</item>
+    <item quantity="other">确定要删除 %d 个技能吗？</item>
+  </plurals>
+  <plurals name="model_list_number_of_models_available">
+    <item quantity="one">%d 个模型可用</item>
+    <item quantity="other">%d 个模型可用</item>
+  </plurals>
+  <plurals name="parameter">
+    <item quantity="one">参数</item>
+    <item quantity="other">参数</item>
+  </plurals>
+  <plurals name="runs">
+    <item quantity="one">%d 次运行</item>
+    <item quantity="other">%d 次运行</item>
+  </plurals>
+  <plurals name="selected_custom_skills_count">
+    <item quantity="one">已选择 %d 个</item>
+    <item quantity="other">已选择 %d 个</item>
+  </plurals>
+  <plurals name="skills_count">
+    <item quantity="one">%d 个技能</item>
+    <item quantity="other">%d 个技能</item>
+  </plurals>
 
 </resources>
