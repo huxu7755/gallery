@@ -397,7 +397,7 @@ fun SettingsDialog(
             }
           }
 
-          // API Server status.
+          // API Server section — toggle button
           Column(modifier = Modifier.fillMaxWidth().semantics(mergeDescendants = true) {}) {
             Text(
               stringResource(R.string.settings_api_server),
@@ -410,20 +410,37 @@ fun SettingsDialog(
             )
             Row(
               verticalAlignment = Alignment.CenterVertically,
-              modifier = Modifier.padding(top = 4.dp),
+              horizontalArrangement = Arrangement.spacedBy(8.dp),
+              modifier = Modifier.padding(top = 6.dp),
             ) {
+              // Status indicator + label
+              val isRunning = LocalApiServer.running
               Text(
-                stringResource(R.string.settings_api_server_status) + ": ",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-              )
-              Text(
-                if (LocalApiServer.running) stringResource(R.string.settings_api_server_running)
+                if (isRunning) stringResource(R.string.settings_api_server_running)
                 else stringResource(R.string.settings_api_server_stopped),
                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                color = if (LocalApiServer.running) MaterialTheme.colorScheme.primary
-                       else MaterialTheme.colorScheme.error,
+                color = if (isRunning) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
               )
+              Spacer(modifier = Modifier.weight(1f))
+              // Start/Stop button — disabled when starting/stopping
+              var toggling by remember { mutableStateOf(false) }
+              Button(
+                onClick = {
+                  toggling = true
+                  if (LocalApiServer.running) {
+                    LocalApiServer.stop()
+                  } else {
+                    LocalApiServer.start()
+                  }
+                  toggling = false
+                },
+                enabled = !toggling,
+              ) {
+                Text(
+                  if (LocalApiServer.running) stringResource(R.string.settings_api_server_stop)
+                  else stringResource(R.string.settings_api_server_start),
+                )
+              }
             }
           }
         }
