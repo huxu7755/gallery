@@ -385,7 +385,7 @@ fun GlobalModelManager(
                 .padding(horizontal = 16.dp, vertical = 4.dp),
           ) {
             Text(
-              task.getLocalizedLabel(ctx),
+              task.getLocalizedLabel(LocalContext.current),
               color = MaterialTheme.colorScheme.onSurface,
               style = MaterialTheme.typography.titleMedium,
             )
