@@ -515,8 +515,42 @@
   <string name="settings_api_server_running">Running</string>
   <string name="settings_api_server_stopped">Stopped</string>
   <string name="settings_api_server_restart">Restart</string>
+  <string name="settings_api_server_start">Start Server</string>
+  <string name="settings_api_server_stop">Stop Server</string>
+
+  <!-- HF Token Expiry -->
+  <string name="settings_hf_token_expires_at">Expires at: </string>
 
   <!-- Theme Unknown -->
   <string name="settings_theme_unknown">Unknown</string>
+
+  <!-- Task Labels and Descriptions -->
+  <string name="task_ai_chat_label">AI Chat</string>
+  <string name="task_ai_chat_description">Chat with on-device large language models</string>
+  <string name="task_ai_chat_short_description">Chat with an on-device LLM</string>
+
+  <string name="task_ask_image_label">Ask Image</string>
+  <string name="task_ask_image_description">Ask questions about images with on-device large language models</string>
+  <string name="task_ask_image_short_description">Ask questions about images</string>
+
+  <string name="task_audio_scribe_label">Audio Scribe</string>
+  <string name="task_audio_scribe_description">Instantly transcribe and/or translate audio clips using on-device large language models</string>
+  <string name="task_audio_scribe_short_description">Transcribe and translate audio</string>
+
+  <string name="task_prompt_lab_label">Prompt Lab</string>
+  <string name="task_prompt_lab_description">Experiment with prompts and model parameters</string>
+  <string name="task_prompt_lab_short_description">Experiment with prompts</string>
+
+  <string name="task_agent_skills_label">Agent Skills</string>
+  <string name="task_agent_skills_description">Chat with on-device large language models with skills and tools</string>
+  <string name="task_agent_skills_short_description">Complete agentic tasks with chat</string>
+
+  <string name="task_mobile_actions_label">Mobile Actions</string>
+  <string name="task_mobile_actions_description">Control your device with natural language commands</string>
+  <string name="task_mobile_actions_short_description">Control device with voice</string>
+
+  <string name="task_tiny_garden_label">Tiny Garden</string>
+  <string name="task_tiny_garden_description">Use natural language to control a virtual garden simulation</string>
+  <string name="task_tiny_garden_short_description">Garden simulation control</string>
 
 </resources>

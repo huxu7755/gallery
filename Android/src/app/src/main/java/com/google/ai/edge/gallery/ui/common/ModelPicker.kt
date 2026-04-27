@@ -55,6 +55,7 @@ import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.data.Model
 import com.google.ai.edge.gallery.data.RuntimeType
 import com.google.ai.edge.gallery.data.Task
+import com.google.ai.edge.gallery.data.getLocalizedLabel
 import com.google.ai.edge.gallery.ui.common.modelitem.StatusIcon
 import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
 import com.google.ai.edge.gallery.ui.theme.labelSmallNarrow
@@ -84,7 +85,7 @@ fun ModelPicker(
         contentDescription = null,
       )
       Text(
-        "${task.label} models",
+        "${task.getLocalizedLabel(LocalContext.current)} models",
         modifier = Modifier.fillMaxWidth(),
         style = MaterialTheme.typography.titleMedium,
         color = getTaskIconColor(task = task),

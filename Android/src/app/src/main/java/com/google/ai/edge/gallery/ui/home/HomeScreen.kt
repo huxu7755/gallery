@@ -120,6 +120,8 @@ import com.google.ai.edge.gallery.data.BuiltInTaskId
 import com.google.ai.edge.gallery.data.Category
 import com.google.ai.edge.gallery.data.CategoryInfo
 import com.google.ai.edge.gallery.data.Task
+import com.google.ai.edge.gallery.data.getLocalizedLabel
+import com.google.ai.edge.gallery.data.getLocalizedShortDescription
 import com.google.ai.edge.gallery.ui.common.RevealingText
 import com.google.ai.edge.gallery.ui.common.SwipingText
 import com.google.ai.edge.gallery.ui.common.TaskIcon
@@ -1025,7 +1027,9 @@ private fun TaskCard(
       )
     else 1f
 
-  val cbTask = stringResource(R.string.cd_task_card, task.label, task.models.size)
+  val context = LocalContext.current
+  val taskLabel = task.getLocalizedLabel(context)
+  val cbTask = stringResource(R.string.cd_task_card, taskLabel, task.models.size)
   Card(
     modifier =
       modifier
@@ -1058,12 +1062,12 @@ private fun TaskCard(
             modifier = Modifier.clearAndSetSemantics {},
           )
           Text(
-            task.label,
+            taskLabel,
             color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleMedium,
           )
           Text(
-            task.shortDescription,
+            task.getLocalizedShortDescription(context),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp, lineHeight = 14.sp),
             modifier = Modifier.clearAndSetSemantics {},
@@ -1092,7 +1096,7 @@ private fun TaskCard(
               horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(
-                task.label,
+                taskLabel,
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.titleMedium,
               )
@@ -1127,7 +1131,7 @@ private fun TaskCard(
           Column {
             Row(verticalAlignment = Alignment.CenterVertically) {
               Text(
-                task.label,
+                taskLabel,
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.titleMedium,
               )

@@ -40,7 +40,10 @@ data class Task(
   val id: String,
 
   /** The label of the task, for display purpose. */
-  val label: String,
+  val label: String = "",
+
+  /** The string resource id for the label. If set, takes precedence over [label]. */
+  @StringRes val labelRes: Int = 0,
 
   /**
    * The category of the task.
@@ -60,10 +63,16 @@ data class Task(
    *
    * Will be shown at the top of the task screen.
    */
-  val description: String,
+  val description: String = "",
+
+  /** The string resource id for the description. If set, takes precedence over [description]. */
+  @StringRes val descriptionRes: Int = 0,
 
   /** Shorter description (within 6 words) of the task. */
   val shortDescription: String = "",
+
+  /** The string resource id for the short description. If set, takes precedence over [shortDescription]. */
+  @StringRes val shortDescriptionRes: Int = 0,
 
   /**
    * (optional)
@@ -155,4 +164,17 @@ private val allLegacyTaskIds: MutableSet<String> =
 
 fun isLegacyTasks(id: String): Boolean {
   return allLegacyTaskIds.contains(id)
+}
+
+// Extension functions for localized string access
+fun Task.getLocalizedLabel(context: android.content.Context): String {
+  return if (labelRes != 0) context.getString(labelRes) else label
+}
+
+fun Task.getLocalizedDescription(context: android.content.Context): String {
+  return if (descriptionRes != 0) context.getString(descriptionRes) else description
+}
+
+fun Task.getLocalizedShortDescription(context: android.content.Context): String {
+  return if (shortDescriptionRes != 0) context.getString(shortDescriptionRes) else shortDescription
 }

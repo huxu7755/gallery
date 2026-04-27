@@ -64,6 +64,8 @@ import androidx.compose.ui.unit.dp
 import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.data.Model
 import com.google.ai.edge.gallery.data.Task
+import com.google.ai.edge.gallery.data.getLocalizedLabel
+import com.google.ai.edge.gallery.data.getLocalizedDescription
 import com.google.ai.edge.gallery.ui.common.ClickableLink
 import com.google.ai.edge.gallery.ui.common.RevealingText
 import com.google.ai.edge.gallery.ui.common.TaskIcon
@@ -201,14 +203,15 @@ fun ModelList(
           TaskIcon(task = task, width = 64.dp, animationProgress = taskIconProgress)
 
           // Task name.
+          val taskLabel = task.getLocalizedLabel(LocalContext.current)
           Box(
             modifier =
               Modifier.offset(x = (20f * (1f - taskIconProgress)).dp).semantics {
-                contentDescription = task.label
+                contentDescription = taskLabel
               }
           ) {
             RevealingText(
-              text = task.label,
+              text = taskLabel,
               style =
                 headlineLargeMedium.copy(
                   brush = Brush.linearGradient(getTaskBgGradientColors(task = task))
@@ -217,7 +220,7 @@ fun ModelList(
               animationProgress = taskIconProgress,
             )
             RevealingText(
-              text = task.label,
+              text = taskLabel,
               style = headlineLargeMedium,
               textAlign = TextAlign.Center,
               animationProgress = taskLabelProgress,
@@ -247,7 +250,7 @@ fun ModelList(
 
           // Description.
           Text(
-            task.description,
+            task.getLocalizedDescription(LocalContext.current),
             textAlign = TextAlign.Center,
             style = bodyLargeNarrow,
             modifier =

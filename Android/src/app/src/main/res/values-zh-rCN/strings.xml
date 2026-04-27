@@ -376,4 +376,41 @@
   <string name="view_results">查看结果</string>
   <string name="warming_up">预热中…</string>
   <string name="warning_no_function_call">未识别到函数调用</string>
+
+  <!-- Task Labels and Descriptions -->
+  <string name="task_ai_chat_label">AI 对话</string>
+  <string name="task_ai_chat_description">与设备端大语言模型对话</string>
+  <string name="task_ai_chat_short_description">与设备端 LLM 对话</string>
+
+  <string name="task_ask_image_label">图像问答</string>
+  <string name="task_ask_image_description">使用设备端大语言模型对图像进行提问</string>
+  <string name="task_ask_image_short_description">对图像进行提问</string>
+
+  <string name="task_audio_scribe_label">音频转写</string>
+  <string name="task_audio_scribe_description">使用设备端大语言模型即时转录和/或翻译音频片段</string>
+  <string name="task_audio_scribe_short_description">转录和翻译音频</string>
+
+  <string name="task_prompt_lab_label">提示词实验室</string>
+  <string name="task_prompt_lab_description">实验提示词和模型参数</string>
+  <string name="task_prompt_lab_short_description">实验提示词</string>
+
+  <string name="task_agent_skills_label">智能体技能</string>
+  <string name="task_agent_skills_description">使用具备技能和工具的设备端大语言模型进行对话</string>
+  <string name="task_agent_skills_short_description">完成智能体任务</string>
+
+  <string name="task_mobile_actions_label">手机操控</string>
+  <string name="task_mobile_actions_description">使用自然语言命令控制您的设备</string>
+  <string name="task_mobile_actions_short_description">语音控制设备</string>
+
+  <string name="task_tiny_garden_label">迷你花园</string>
+  <string name="task_tiny_garden_description">使用自然语言控制虚拟花园模拟</string>
+  <string name="task_tiny_garden_short_description">花园模拟控制</string>
+
+  <!-- API Server Toggle -->
+  <string name="settings_api_server_start">启动服务器</string>
+  <string name="settings_api_server_stop">停止服务器</string>
+
+  <!-- HF Token Expiry -->
+  <string name="settings_hf_token_expires_at">过期时间：</string>
+
 </resources>

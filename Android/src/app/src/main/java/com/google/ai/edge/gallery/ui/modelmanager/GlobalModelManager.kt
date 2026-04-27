@@ -91,6 +91,7 @@ import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.data.Model
 import com.google.ai.edge.gallery.data.RuntimeType
 import com.google.ai.edge.gallery.data.Task
+import com.google.ai.edge.gallery.data.getLocalizedLabel
 import com.google.ai.edge.gallery.proto.ImportedModel
 import com.google.ai.edge.gallery.ui.common.TaskIcon
 import com.google.ai.edge.gallery.ui.common.modelitem.ModelItem
@@ -384,7 +385,7 @@ fun GlobalModelManager(
                 .padding(horizontal = 16.dp, vertical = 4.dp),
           ) {
             Text(
-              task.label,
+              task.getLocalizedLabel(ctx),
               color = MaterialTheme.colorScheme.onSurface,
               style = MaterialTheme.typography.titleMedium,
             )

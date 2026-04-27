@@ -31,6 +31,8 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import com.google.ai.edge.gallery.data.getLocalizedLabel
 import com.google.ai.edge.gallery.GalleryTopAppBar
 import com.google.ai.edge.gallery.data.AppBarAction
 import com.google.ai.edge.gallery.data.AppBarActionType
@@ -50,7 +52,8 @@ fun ModelManager(
   onBenchmarkClicked: (Model) -> Unit = {},
 ) {
   // Set title based on the task.
-  val title = task.label
+  val context = LocalContext.current
+  val title = task.getLocalizedLabel(context)
   // Model count.
   val modelCount by remember {
     derivedStateOf {
